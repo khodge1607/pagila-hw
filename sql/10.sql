@@ -3,7 +3,6 @@
  * Use tables film and film_actor.
  */
 SELECT title, film.film_id, COUNT(DISTINCT actor_id) AS "actor_count" 
-FROM film, film_actor 
-WHERE film.film_id = film_actor.film_id
-GROUP BY film.film_id
+FROM film JOIN film_actor ON film.film_id = film_actor.film_id 
+GROUP BY film.film_id, title
 ORDER BY "actor_count" ASC, film.film_id;

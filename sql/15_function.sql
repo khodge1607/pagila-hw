@@ -4,7 +4,7 @@
  */
 CREATE OR REPLACE FUNCTION category_counts_by_language(TEXT) RETURNS TABLE(name TEXT, count BIGINT) AS
 $$
-	SELECT category.name, count(*)
+	SELECT category.name, count(*) AS "sum"
 	FROM language 
 		JOIN film ON film.language_id = language.language_id
 		JOIN film_category ON film.film_id = film_category.film_id

@@ -8,4 +8,4 @@ FROM film, inventory
 WHERE film.film_id = inventory.film_id
 GROUP BY film.film_id
 HAVING title ILIKE 'h%'
-ORDER BY film_id DESC;
+ORDER BY film.title DESC;

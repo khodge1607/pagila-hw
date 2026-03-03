@@ -19,6 +19,7 @@ jobs:
         # run the database in docker container
         docker compose up -d --build
 
+        sleep 60
         # verify that it is running successfully
         # this is an idempotent command useful for debugging
         docker ps -a
@@ -29,7 +30,7 @@ jobs:
         # but we sleep for a long time just to be sure that everything is loaded;
         # this is a bit hacky,
         # and a proper check would be to have an infinite loop that terminates once the data has been loaded
-        sleep 60
+        
 
         docker compose exec -T pg psql -U postgres -d pagila -c "\dt"
         # run the tests
